@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Challenges - HealthyVibes</title>
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --bg-color: #f7f9fb;
+            --primary-green: #387034;
+            --text-dark: #2c3e50;
+            --text-grey: #7f8c8d;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.06);
+            --nutrition-blue: #3498db;
+            --fitness-green: #2ecc71;
+            --mindfulness-purple: #9b59b6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- Navigation Bar --- */
+        nav {
+            background: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo { font-weight: bold; color: var(--primary-green); font-size: 1.5rem; display: flex; align-items: center; gap: 8px; }
+        .nav-links { list-style: none; display: flex; gap: 20px; }
+        .nav-links a { text-decoration: none; color: var(--text-grey); font-size: 0.95rem; transition: color 0.3s; }
+        .nav-links a.active { color: var(--primary-green); font-weight: 600; border-bottom: 2px solid var(--primary-green); }
+        .nav-links a:hover { color: var(--primary-green); }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: radial-gradient(circle at top, rgba(255, 255, 150, 0.1), transparent);
+        }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 15px; }
+        .hero p { color: var(--text-grey); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+
+        /* --- Section Header --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+        .view-all {
+            padding: 8px 18px;
+            border: 1px solid var(--primary-green);
+            color: var(--primary-green);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .view-all:hover { background: var(--primary-green); color: white; }
+
+        /* --- Challenge Grid --- */
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        /* --- Challenge Card --- */
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .tag { color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        .tag.nutrition { background: var(--nutrition-blue); }
+        .tag.fitness { background: var(--fitness-green); }
+        .tag.mindfulness { background: var(--mindfulness-purple); }
+        .days { color: var(--text-grey); font-size: 0.9rem; }
+        
+        .card h3 { margin-bottom: 10px; font-size: 1.25rem; }
+        .card .desc { color: var(--text-grey); font-size: 0.95rem; margin-bottom: 25px; min-height: 45px; }
+
+        /* Progress Bar */
+        .progress-container { margin-bottom: 20px; }
+        .progress-text { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px; font-weight: 600; }
+        .progress-bar { height: 8px; background: #ecf0f1; border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--primary-green); transition: width 0.5s ease; }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+        .joined { color: var(--text-grey); font-size: 0.9rem; }
+        .join-btn {
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .join-btn:hover { background: #2d5a2a; }
+
+        /* --- Habit Tracker Section --- */
+        .tracker-section {
+            background: var(--white);
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 80px;
+            text-align: center;
+        }
+        .habit-list {
+            list-style: none;
+            max-width: 500px;
+            margin: 30px auto;
+            text-align: left;
+        }
+        .habit-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            font-size: 1.1rem;
+        }
+        .habit-item input { width: 20px; height: 20px; accent-color: var(--primary-green); cursor: pointer; }
+        .save-btn {
+            background: #FFC107;
+            color: #333;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .save-btn:hover { background: #ffb300; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">🌿 HealthyVibes</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#" class="active">Challenges</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Wellness Challenges</h1>
+        <p>Transform your health through fun, achievable challenges designed to build lasting habits.</p>
+    </header>
+
+    <main class="container">
+        <div class="section-header">
+            <div>
+                <h2>Current Challenges</h2>
+            </div>
+            <a href="#" class="view-all">View All →</a>
+        </div>
+
+        <div class="challenge-grid">
+            <div class="card">
+                <div class="card-top">
+                    <span class="tag nutrition">Nutrition</span>
+                    <span class="days">📅 15 days left</span>
+                </div>
+                <h3>30-Day Hydration Challenge</h3>
+                <p class="desc">Drink 8 glasses of water daily and transform your energy levels.</p>
+                <div class="progress-container">
+                    <div class="progress-text">
+                        <span>Progress</span>
+                        <span>50%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 50%;"></div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="joined">👥 1,234 joined</span>
+                    <button class="join-btn" onclick="updateHabit('Hydration')">Join Now</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-top">
+                    <span class="tag fitness">Fitness</span>
+                    <span class="days">📅 21 days left</span>
+                </div>
+                <h3>Morning Stretch Routine</h3>
+                <p class="desc">Start each day with 10 minutes of gentle stretching for flexibility.</p>
+                <div class="progress-container">
+                    <div class="progress-text">
+                        <span>Progress</span>
+                        <span>30%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 30%;"></div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="joined">👥 892 joined</span>
+                    <button class="join-btn" onclick="updateHabit('Stretching')">Join Now</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-top">
+                    <span class="tag mindfulness">Mindfulness</span>
+                    <span class="days">📅 3 days left</span>
+                </div>
+                <h3>Digital Detox Weekend</h3>
+                <p class="desc">Reduce screen time and reconnect with the present moment.</p>
+                <div class="progress-container">
+                    <div class="progress-text">
+                        <span>Progress</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="joined">👥 567 joined</span>
+                    <button class="join-btn" onclick="updateHabit('Digital Detox')">Join Now</button>
+                </div>
+            </div>
+        </div>
+
+        <section class="tracker-section">
+            <h2>Your Daily Habit Tracker</h2>
+            <p>Check off your habits below and save your daily log.</p>
+            
+            <ul class="habit-list">
+                <li class="habit-item">
+                    <input type="checkbox" id="habit1" value="Drank 8 glasses of water">
+                    <label for="habit1">Drank 8 glasses of water</label>
+                </li>
+                <li class="habit-item">
+                    <input type="checkbox" id="habit2" value="Completed Morning Stretch">
+                    <label for="habit2">Completed Morning Stretch</label>
+                </li>
+                <li class="habit-item">
+                    <input type="checkbox" id="habit3" value="No screens after 9 PM">
+                    <label for="habit3">No screens after 9 PM</label>
+                </li>
+                <li class="habit-item">
+                    <input type="checkbox" id="habit4" value="Meditated for 10 minutes">
+                    <label for="habit4">Meditated for 10 minutes</label>
+                </li>
+            </ul>
+
+            <button class="save-btn" onclick="saveToFile()">Save Habit Log (track.txt)</button>
+        </section>
+    </main>
+
+    <script>
+        // Simple function to simulate joining and updating state
+        function updateHabit(name) {
+            alert("You have joined the " + name + " challenge! Start tracking below.");
+        }
+
+        // --- Habit Tracker logic to record to track.txt ---
+        function saveToFile() {
+            const checkboxes = document.querySelectorAll('.habit-item input[type="checkbox"]');
+            let content = "HEALTHYVIBES HABIT TRACKER LOG\n";
+            content += "Date: " + new Date().toLocaleString() + "\n";
+            content += "----------------------------------\n";
+
+            let anyChecked = false;
+            checkboxes.forEach((box) => {
+                if (box.checked) {
+                    content += "[DONE] " + box.value + "\n";
+                    anyChecked = true;
+                } else {
+                    content += "[PENDING] " + box.value + "\n";
+                }
+            });
+
+            if (!anyChecked) {
+                alert("Please check at least one habit before saving!");
+                return;
+            }
+
+            // Create a Blob containing the text content
+            const blob = new Blob([content], { type: 'text/plain' });
+            
+            // Create a temporary anchor element to trigger the download
+            const link = document.createElement('a');
+            link.download = 'track.txt';
+            link.href = window.URL.createObjectURL(blob);
+            link.style.display = 'none';
+            
+            // Trigger the download
+            document.body.appendChild(link);
+            link.click();
+            
+            // Cleanup
+            document.body.removeChild(link);
+            alert("Success! Your progress has been saved to track.txt.");
+        }
+    </script>
+</body>
+</html>
