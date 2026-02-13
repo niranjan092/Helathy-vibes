@@ -1,0 +1,134 @@
+
+/* --- Section Container Styling --- */
+
+.featured-section {
+    max-width: 1200px;
+    margin: 60px auto; /* Center the section */
+    padding: 40px 20px;
+    text-align: center; /* Center the header text block */
+}
+
+/* --- Header Block Styling --- */
+
+.section-header {
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-size: 2em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    font-size: 1.1em;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto; /* Center the paragraph text */
+}
+
+/* --- Card Row Layout: Flexbox --- */
+
+.feature-cards-row {
+    display: flex;
+    justify-content: space-between; /* Distribute space evenly between cards */
+    gap: 20px; /* Space between the cards */
+}
+
+/* --- Individual Challenge Card Styling --- */
+
+.challenge-card {
+    flex: 1; /* Allow cards to grow and shrink equally (three equal columns) */
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-align: left; /* Align card content left */
+    display: flex; /* Use flex to easily push the link to the bottom */
+    flex-direction: column;
+}
+
+.challenge-card h3 {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.challenge-card p {
+    font-size: 1em;
+    color: #7f8c8d;
+    line-height: 1.5;
+    /* This flex property ensures the paragraph takes up all available space,
+       pushing the link to the bottom consistently across all cards. */
+    flex-grow: 1; 
+}
+
+/* --- Icon Styling --- */
+
+.card-icon-area {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 8px; 
+    background-color: #ecf0f1;
+}
+
+.card-icon-area .icon {
+    font-size: 1.8em;
+    line-height: 1;
+}
+
+/* --- Anchor Link Styling (See More) --- */
+
+.see-more-link {
+    display: block; /* Make the link take its own line */
+    margin-top: 20px;
+    color: #3498db; /* A bright, standard link color */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease-in-out;
+}
+
+.see-more-link:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* --- HOVER EFFECT: Upward Tilt --- */
+
+.challenge-card:hover {
+    /* Lift the card slightly upwards */
+    transform: translateY(-5px); 
+    /* Slightly increase the shadow for a "lifting" effect */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); 
+}
+
+
+/* --- Basic Responsiveness --- */
+
+@media (max-width: 900px) {
+    .feature-cards-row {
+        /* On medium screens, wrap the cards and center them */
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+
+    .challenge-card {
+        /* On medium screens, let cards take half the width minus the gap */
+        flex: 0 0 calc(50% - 10px); 
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .challenge-card {
+        /* On small screens, stack the cards */
+        flex: 0 0 100%;
+    }
+}

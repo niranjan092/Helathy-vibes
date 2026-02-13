@@ -1,0 +1,214 @@
+
+/* --- Main Section Layout --- */
+.featured-challenges-section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+/* --- Header and "View All" Button --- */
+.challenges-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Align the button with the bottom of the text */
+    margin-bottom: 40px;
+}
+
+.challenges-header h2 {
+    font-size: 2.5em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.challenges-header p {
+    font-size: 1.1em;
+    color: #555;
+    margin-top: 5px;
+}
+
+.view-all-button {
+    text-decoration: none;
+    color: #4CAF50; /* Green primary color */
+    border: 1px solid #4CAF50;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.view-all-button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* --- Challenges Grid Layout --- */
+.challenges-grid {
+    display: grid;
+    /* Create three equal columns for the cards */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px;
+}
+
+/* --- Individual Challenge Card --- */
+
+.challenge-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+    /* Use Flexbox internally to space out elements vertically */
+    display: flex;
+    flex-direction: column;
+}
+
+.challenge-card h3,
+.challenge-card p {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.challenge-card h3 {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-top: 15px;
+}
+
+.challenge-card .challenge-description {
+    font-size: 0.95em;
+    color: #7f8c8d;
+    line-height: 1.4;
+    /* This ensures the description pushes the progress area down */
+    margin-bottom: 25px; 
+    flex-grow: 1; 
+}
+
+/* --- Card Meta (Tags and Days Left) --- */
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.category-tag {
+    font-size: 0.8em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+/* Specific Tag Colors */
+.category-tag.nutrition {
+    background-color: #3498db; /* Blue */
+}
+
+.category-tag.fitness {
+    background-color: #2ecc71; /* Green */
+}
+
+.category-tag.mindfulness {
+    background-color: #9b59b6; /* Purple */
+}
+
+.days-left {
+    font-size: 0.9em;
+    color: #7f8c8d;
+}
+
+/* --- Progress Area Styling --- */
+.progress-area {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.progress-area .progress-label {
+    font-size: 0.85em;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.progress-bar-container {
+    height: 8px;
+    background-color: #ecf0f1;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #4CAF50; /* Green primary color */
+    /* Width is set inline in the HTML using JS/Data, but here it's static for example */
+    transition: width 0.5s ease;
+}
+
+.progress-percentage {
+    float: right;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* --- Card Footer (Joined Count and Button) --- */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.joined-count {
+    font-size: 0.9em;
+    color: #7f8c8d;
+}
+
+/* --- Join Now Button Styling and Hover Effect --- */
+.join-now-button {
+    text-decoration: none;
+    background-color: #4CAF50; /* Primary Green */
+    color: white;
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.15s;
+    /* Optional: Small shadow to make it pop */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.join-now-button:hover {
+    /* Slight darkening on hover */
+    background-color: #45a049; 
+    /* Slight press-down effect (visual choice) */
+    transform: translateY(1px); 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Basic Responsiveness --- */
+@media (max-width: 950px) {
+    .challenges-grid {
+        /* Switch to two columns on smaller screens */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .challenges-grid {
+        /* Stack cards on small screens */
+        grid-template-columns: 1fr;
+    }
+    
+    .challenges-header {
+        /* Stack header elements if they don't fit well side-by-side */
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .view-all-button {
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,136 @@
+.success-stories-section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 40px 20px;
+    text-align: center; /* Center the header text block */
+}
+
+/* --- Header Block Styling --- */
+.stories-header {
+    margin-bottom: 50px;
+}
+
+.stories-header h2 {
+    font-size: 2.5em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.stories-header p {
+    font-size: 1.1em;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* --- Card Row Layout: Flexbox --- */
+.testimonial-cards-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px; /* Space between the cards */
+}
+
+/* --- Individual Testimonial Card --- */
+.testimonial-card {
+    flex: 1; /* Ensures all three cards are equal width */
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    text-align: left; /* Card content aligns left */
+    /* Add the same subtle hover effect as before for consistency */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); 
+}
+
+/* --- Star Rating Styling --- */
+.star-rating {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    /* Stars should all be the same color */
+    color: #f39c12; /* Gold/Yellow color */
+    letter-spacing: 2px;
+}
+
+.star-rating .star {
+    /* To remove any strange character spacing issues */
+    display: inline-block;
+    line-height: 1;
+}
+
+/* --- Quote Text Styling --- */
+.quote {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 30px;
+    /* Use flex-grow to ensure all quotes take up max available space before user-info */
+    flex-grow: 1; 
+}
+
+/* --- User Info (Initials and Details) --- */
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-top: auto; /* Push user info to the bottom of the card */
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.initials-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #ecf0f1; /* Light grey background */
+    color: #7f8c8d; /* Grey text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-right: 15px;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1em;
+}
+
+.user-status {
+    font-size: 0.9em;
+    color: #7f8c8d;
+    margin-top: 2px;
+}
+
+/* --- Basic Responsiveness --- */
+
+@media (max-width: 950px) {
+    .testimonial-cards-row {
+        /* Allow cards to wrap to the next line */
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+    .testimonial-card {
+        /* On medium screens, take up half the width minus gap */
+        flex: 0 0 calc(50% - 15px); 
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .testimonial-card {
+        /* On small screens, stack them vertically */
+        flex: 0 0 100%; 
+    }
+}

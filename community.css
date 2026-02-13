@@ -1,0 +1,135 @@
+/* --- Join Community Section Styling --- */
+
+.join-community-section {
+    /* The main dark green background color */
+    background-color: #387034; 
+    padding: 80px 20px;
+    color: white; /* Default text color is white */
+    text-align: center; /* Center all block-level content */
+    
+    /* Use Flexbox to manage vertical alignment if content heights vary */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- Icon Styling --- */
+
+.email-icon-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /* Use a slightly lighter or greyed-out version of the background color */
+    background-color: rgba(255, 255, 255, 0.1); 
+    margin-bottom: 25px;
+}
+
+.email-icon {
+    font-size: 2em;
+    line-height: 1;
+}
+
+/* --- Text Styling --- */
+
+.join-title {
+    font-size: 2.2em;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.join-description {
+    font-size: 1.1em;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 35px;
+    max-width: 600px;
+}
+
+/* --- Form and Input Styling --- */
+
+.join-form {
+    width: 100%;
+    max-width: 600px; /* Limit the form width to keep it centered */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group {
+    display: flex;
+    width: 100%;
+    gap: 15px; /* Space between the two input fields */
+    margin-bottom: 20px;
+}
+
+.form-input {
+    flex: 1; /* Makes both inputs equal width */
+    padding: 15px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    /* Match the background color for a clean look */
+    background-color: rgba(255, 255, 255, 0.2); 
+    color: white;
+    /* Optional: A subtle border for definition */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Style the placeholder text */
+.form-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* --- CTA Button Styling and Hover Effect --- */
+
+.join-now-cta {
+    /* The prominent yellow button color */
+    background-color: #FFC107; 
+    color: #333;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.1s;
+    /* Optional: Small shadow to make it pop */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-decoration: none; /* In case you change it to an anchor tag */
+    display: inline-block;
+}
+
+.join-now-cta:hover {
+    background-color: #ffb300; /* Slightly darker yellow on hover */
+    transform: translateY(-1px); /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Privacy Note --- */
+
+.privacy-note {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 30px;
+}
+
+/* --- Basic Responsiveness --- */
+
+@media (max-width: 600px) {
+    .join-community-section {
+        padding: 50px 20px;
+    }
+    
+    .input-group {
+        /* Stack inputs vertically on small screens */
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .join-now-cta {
+        /* Make the button full width on small screens */
+        width: 100%; 
+    }
+}

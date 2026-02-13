@@ -1,0 +1,101 @@
+
+/* --- Section Container Styling --- */
+.popular-categories-section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 40px 20px;
+    text-align: center; /* Center the header block */
+}
+
+/* --- Header Block Styling --- */
+.categories-header {
+    margin-bottom: 40px;
+}
+
+.categories-header h2 {
+    font-size: 2.5em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.categories-header p {
+    font-size: 1.1em;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* --- Category Link Row Layout: Flexbox --- */
+.category-links-row {
+    display: flex;
+    justify-content: center; /* Center the entire row of links */
+    gap: 20px; /* Space between the links */
+    flex-wrap: wrap; /* Allows the links to wrap on small screens */
+}
+
+/* --- Individual Category Link Styling --- */
+.category-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 600;
+    color: #2c3e50; /* Dark text color */
+    
+    padding: 15px 30px;
+    border-radius: 40px; /* High radius for the pill shape */
+    
+    /* Smooth transition for hover effects */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    /* Ensure the link doesn't shrink unnecessarily */
+    flex-shrink: 0;
+}
+
+.category-link .icon {
+    font-size: 1.2em;
+    margin-right: 8px;
+    line-height: 1; /* Helps vertical alignment of the emoji */
+}
+
+/* --- Color Backgrounds (Matching the image palette) --- */
+
+.nutrition-bg {
+    background-color: #e6ffe6; /* Light green */
+    border: 1px solid rgba(100, 200, 100, 0.2);
+}
+
+.fitness-bg {
+    background-color: #e6f0ff; /* Light blue */
+    border: 1px solid rgba(100, 150, 255, 0.2);
+}
+
+.mindfulness-bg {
+    background-color: #f6e6ff; /* Light purple */
+    border: 1px solid rgba(150, 100, 255, 0.2);
+}
+
+.lifestyle-bg {
+    background-color: #fff9e6; /* Light yellow/cream */
+    border: 1px solid rgba(255, 200, 100, 0.2);
+}
+
+/* --- Hover Effect --- */
+.category-link:hover {
+    transform: translateY(-2px); /* Slight lift */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Basic Responsiveness --- */
+@media (max-width: 550px) {
+    .category-links-row {
+        gap: 15px;
+    }
+    .category-link {
+        /* Allow links to take up more space when wrapping */
+        padding: 12px 20px;
+        flex: 1 1 40%; /* Allows for two per row on mobile, roughly */
+        justify-content: center;
+    }
+}
